@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="https://cdn.discordapp.com/attachments/1357053988414947358/1390789388157587586/file_00000000ac58620a847b789ba3bbb3a1.png?ex=688c78cd&is=688b274d&hm=79217455d4145549c7138d21b0381381372150b7c16379b2aa9e8b9e9ab8a5e8&" type="image/png">
+  <title>Ідеї для модифікацій | Profinevski Studio</title>
+  <style>
+    :root {
+      --primary-bg: #0a0a0f;
+      --secondary-bg: #12121a;
+      --card-bg: rgba(26, 26, 35, 0.6);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --text-muted: rgba(255, 255, 255, 0.4);
+      --accent-blue: #3b82f6;
+      --accent-blue-hover: #2563eb;
+      --accent-green: #10b981;
+      --accent-green-hover: #059669;
+      --accent-red: #ef4444;
+      --accent-red-hover: #dc2626;
+      --accent-yellow: #f59e0b;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-glow: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.2);
+      --border-radius: 16px;
+      --border-radius-sm: 8px;
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 60%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+        linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--secondary-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* Auth Buttons */
+    .auth-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .auth-btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+    
+    .user-btn {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.3) 100%);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: white;
+    }
+    
+    .admin-btn {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.3) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: white;
+    }
+    
+    .auth-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Auth Forms */
+    .auth-form-container {
+      display: none;
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-md);
+      animation: slideDown 0.4s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .auth-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .auth-title i {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .auth-form-group {
+      margin-bottom: 0;
+    }
+
+    .auth-form-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .auth-form-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .auth-form-input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    }
+
+    .auth-form-submit {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 8px;
+    }
+
+    .auth-form-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+    }
+
+    .auth-form-switch {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .auth-form-switch a {
+      color: var(--accent-blue);
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .auth-form-switch a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    .header {
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+      animation: slideDown 0.6s ease-out;
+    }
+
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-primary);
+    }
+
+    .header::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      box-shadow: var(--shadow-md);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: var(--shadow-md), var(--shadow-glow);
+      }
+      50% {
+        box-shadow: var(--shadow-md), 0 0 50px rgba(102, 126, 234, 0.4);
+      }
+    }
+
+    .title-section h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .title-section p {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    .stats-section {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 18px 24px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+
+    .stat-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      display: block;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: #3b82f6; /* Fallback color */
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* Form Section */
+    .form-container {
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 36px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-md);
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .form-title i {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-size: 15px;
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-select option {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 12px;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    }
+
+    .form-textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Ideas List */
+    .ideas-container {
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      animation: fadeIn 0.6s ease-out 0.2s backwards;
+    }
+
+    .ideas-header {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+    }
+
+    .ideas-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .ideas-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .action-btn {
+      padding: 10px 18px;
+      background: var(--gradient-primary);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+    }
+
+    .ideas-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .idea-item {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+      animation: slideIn 0.4s ease-out backwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .idea-item:hover {
+      background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
+    }
+
+    .idea-item:last-child {
+      border-bottom: none;
+    }
+
+    .idea-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      gap: 16px;
+    }
+
+    .idea-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .idea-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .idea-category {
+      padding: 6px 14px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+      color: var(--accent-blue);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .idea-date {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .idea-content {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .idea-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .idea-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .author-name {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .idea-votes {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--glass-bg);
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .vote-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 6px;
+      border-radius: 8px;
+    }
+
+    .vote-btn:hover {
+      color: var(--accent-blue);
+      background: var(--glass-bg);
+    }
+    
+    .vote-btn.active {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .vote-count {
+      font-size: 16px;
+      font-weight: 700;
+      min-width: 24px;
+      text-align: center;
+      color: var(--accent-pink);
+    }
+
+    /* Status badges */
+    .status-badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .status-pending {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%);
+      color: var(--accent-yellow);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .status-review {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+      color: var(--accent-blue);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .status-approved {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%);
+      color: var(--accent-green);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .status-rejected {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%);
+      color: var(--accent-red);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 24px;
+      background: var(--glass-bg);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .pagination-btn {
+      padding: 10px 16px;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .pagination-btn:hover:not(:disabled) {
+      background: var(--gradient-primary);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .pagination-btn.active {
+      background: var(--gradient-primary);
+      color: white;
+      border-color: transparent;
+    }
+
+    .pagination-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .pagination-info {
+      margin: 0 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 80px 40px;
+      color: var(--text-muted);
+    }
+
+    .empty-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      opacity: 0.3;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .empty-state p {
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+
+    /* User Info */
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding: 16px;
+      background: var(--glass-bg);
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+    }
+
+    .user-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .user-details {
+      flex: 1;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .user-email {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .logout-btn {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.3) 100%);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: white;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .logout-btn:hover {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.4) 0%, rgba(220, 38, 38, 0.5) 100%);
+      transform: translateY(-2px);
+    }
+
+    /* Loading */
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+      gap: 20px;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid var(--border-color);
+      border-top-color: var(--accent-blue);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading span {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    /* Toast */
+    .toast-container {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .toast {
+      padding: 16px 24px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      backdrop-filter: blur(20px);
+      animation: slideInRight 0.4s ease-out;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .toast.success {
+      border-color: rgba(16, 185, 129, 0.5);
+    }
+
+    .toast.error {
+      border-color: rgba(239, 68, 68, 0.5);
+    }
+
+    .toast.success i {
+      color: var(--accent-green);
+    }
+
+    .toast.error i {
+      color: var(--accent-red);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 16px;
+      }
+
+      .header {
+        padding: 24px;
+      }
+
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .logo-section {
+        flex-direction: column;
+      }
+
+      .title-section h1 {
+        font-size: 24px;
+      }
+
+      .stats-section {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .stat-item {
+        flex: 1;
+        min-width: 90px;
+        padding: 14px;
+      }
+
+      .stat-number {
+        font-size: 22px;
+      }
+
+      .form-container, .auth-form-container {
+        padding: 24px;
+      }
+
+      .idea-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .idea-meta {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .pagination {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="container">
+    <!-- Auth Buttons -->
+    <div class="auth-buttons" id="authButtons">
+      <button onclick="showLoginForm()" class="auth-btn user-btn">
+        <i class="fas fa-sign-in-alt"></i> Увійти
+      </button>
+      <button onclick="showRegisterForm()" class="auth-btn admin-btn">
+        <i class="fas fa-user-plus"></i> Реєстрація
+      </button>
+    </div>
+
+    <!-- User Info (shown when logged in) -->
+    <div class="user-info" id="userInfo" style="display: none;">
+      <div class="user-avatar" id="userAvatar">U</div>
+      <div class="user-details">
+        <div class="user-name" id="userDisplayName">Користувач</div>
+        <div class="user-email" id="userEmail">user@example.com</div>
+      </div>
+      <button class="logout-btn" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> Вийти
+      </button>
+    </div>
+
+    <!-- Login Form -->
+    <div class="auth-form-container" id="loginFormContainer">
+      <h2 class="auth-title"><i class="fas fa-sign-in-alt"></i> Вхід</h2>
+      <form id="loginForm" class="auth-form">
+        <div class="auth-form-group">
+          <label for="loginEmail" class="auth-form-label">Email</label>
+          <input type="email" id="loginEmail" class="auth-form-input" placeholder="Введіть ваш email" required>
+        </div>
+        <div class="auth-form-group">
+          <label for="loginPassword" class="auth-form-label">Пароль</label>
+          <input type="password" id="loginPassword" class="auth-form-input" placeholder="Введіть ваш пароль" required>
+        </div>
+        <button type="submit" class="auth-form-submit">Увійти</button>
+        <div class="auth-form-switch">
+          Ще не зареєстровані? <a onclick="showRegisterForm()">Створіть акаунт</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Register Form -->
+    <div class="auth-form-container" id="registerFormContainer">
+      <h2 class="auth-title"><i class="fas fa-user-plus"></i> Реєстрація</h2>
+      <form id="registerForm" class="auth-form">
+        <div class="auth-form-group">
+          <label for="registerName" class="auth-form-label">Ім'я</label>
+          <input type="text" id="registerName" class="auth-form-input" placeholder="Введіть ваше ім'я" required>
+        </div>
+        <div class="auth-form-group">
+          <label for="registerEmail" class="auth-form-label">Email</label>
+          <input type="email" id="registerEmail" class="auth-form-input" placeholder="Введіть ваш email" required>
+        </div>
+        <div class="auth-form-group">
+          <label for="registerPassword" class="auth-form-label">Пароль</label>
+          <input type="password" id="registerPassword" class="auth-form-input" placeholder="Створіть пароль" required>
+        </div>
+        <div class="auth-form-group">
+          <label for="registerConfirmPassword" class="auth-form-label">Підтвердіть пароль</label>
+          <input type="password" id="registerConfirmPassword" class="auth-form-input" placeholder="Повторіть пароль" required>
+        </div>
+        <button type="submit" class="auth-form-submit">Зареєструватися</button>
+        <div class="auth-form-switch">
+          Вже зареєстровані? <a onclick="showLoginForm()">Увійдіть</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div class="logo-section">
+          <img src="images/logo.jpg" alt="Profinevski Studio Logo" class="logo">
+          <div class="title-section">
+            <h1>Ідеї для модифікацій</h1>
+            <p>Ваші пропозиції для нашого магазину</p>
+          </div>
+        </div>
+        <div class="stats-section">
+          <div class="stat-item">
+            <span class="stat-number" id="totalIdeas">0</span>
+            <span class="stat-label">Всього ідей</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="approvedIdeas">0</span>
+            <span class="stat-label">Схвалено</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="pendingIdeas">0</span>
+            <span class="stat-label">На розгляді</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-container">
+      <h2 class="form-title"><i class="fas fa-lightbulb"></i> Запропонувати ідею</h2>
+      <form id="ideaForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="ideaTitle" class="form-label">Назва ідеї</label>
+            <input type="text" id="ideaTitle" class="form-input" placeholder="Наприклад: Поліцейський BMW X5" required>
+          </div>
+          <div class="form-group">
+            <label for="ideaCategory" class="form-label">Категорія</label>
+            <select id="ideaCategory" class="form-select" required>
+              <option value="">Оберіть категорію</option>
+              <option value="vehicle">Транспорт</option>
+              <option value="skin">Скіни</option>
+              <option value="script">Скрипти</option>
+              <option value="map">Мапи</option>
+              <option value="other">Інше</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ideaDescription" class="form-label">Опис ідеї</label>
+          <textarea id="ideaDescription" class="form-textarea" placeholder="Детально опишіть свою ідею..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit" disabled>
+          <i class="fas fa-paper-plane"></i> Надіслати ідею
+        </button>
+      </form>
+    </div>
+
+    <!-- Ideas List -->
+    <div class="ideas-container">
+      <div class="ideas-header">
+        <h3 class="ideas-title">Останні ідеї</h3>
+        <div class="ideas-actions">
+          <button class="action-btn" onclick="refreshIdeas()">
+            <i class="fas fa-sync-alt"></i> Оновити
+          </button>
+          <button class="action-btn" onclick="filterIdeas('all')">
+            <i class="fas fa-filter"></i> Всі
+          </button>
+        </div>
+      </div>
+      
+      <ul class="ideas-list" id="ideasList">
+        <li class="idea-item">
+          <div class="loading">
+            <div class="spinner"></div>
+            <span>Завантаження ідей...</span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination">
+        <button class="pagination-btn" id="prevBtn" onclick="changePage(-1)">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div id="pageNumbers"></div>
+        <button class="pagination-btn" id="nextBtn" onclick="changePage(1)">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="pagination-info" id="paginationInfo"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    import { getDatabase, ref, push, onValue, get, set, remove, update } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCgvuGxx5D6ZIMnn-SBV2zJibz15qusuB8",
+      authDomain: "profinevski-studio.firebaseapp.com",
+      databaseURL: "https://profinevski-studio-default-rtdb.firebaseio.com",
+      projectId: "profinevski-studio",
+      storageBucket: "profinevski-studio.firebasestorage.app",
+      messagingSenderId: "262833616815",
+      appId: "1:262833616815:web:f63b8325ce8e923c2be15a",
+      measurementId: "G-Y7J0HC6N0L"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth(app);
+    console.log('Firebase initialized successfully');
+
+    // DOM elements
+    const authButtons = document.getElementById('authButtons');
+    const userInfo = document.getElementById('userInfo');
+    const userAvatar = document.getElementById('userAvatar');
+    const userDisplayName = document.getElementById('userDisplayName');
+    const userEmail = document.getElementById('userEmail');
+    
+    const loginFormContainer = document.getElementById('loginFormContainer');
+    const loginForm = document.getElementById('loginForm');
+    const registerFormContainer = document.getElementById('registerFormContainer');
+    const registerForm = document.getElementById('registerForm');
+    
+    const ideaForm = document.getElementById('ideaForm');
+    const ideasList = document.getElementById('ideasList');
+    const totalIdeas = document.getElementById('totalIdeas');
+    const approvedIdeas = document.getElementById('approvedIdeas');
+    const pendingIdeas = document.getElementById('pendingIdeas');
+
+    // Global variables
+    let allIdeas = [];
+    let filteredIdeas = [];
+    let currentPage = 1;
+    let itemsPerPage = 10;
+    let currentFilter = 'all';
+
+    // Category names
+    const categoryNames = {
+      vehicle: 'Транспорт',
+      skin: 'Скіни',
+      script: 'Скрипти',
+      map: 'Мапи',
+      other: 'Інше'
+    };
+
+    // Status names
+    const statusNames = {
+      pending: { class: 'status-pending', text: 'На розгляді' },
+      review: { class: 'status-review', text: 'В роботі' },
+      approved: { class: 'status-approved', text: 'Схвалено' },
+      rejected: { class: 'status-rejected', text: 'Відхилено' }
+    };
+
+    // Show toast notification
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        <span>${message}</span>
+      `;
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.animation = 'slideInRight 0.4s ease-out reverse';
+        setTimeout(() => toast.remove(), 400);
+      }, 3000);
+    }
+
+    // Show login form
+    window.showLoginForm = function() {
+      loginFormContainer.style.display = 'block';
+      registerFormContainer.style.display = 'none';
+    };
+
+    // Show register form
+    window.showRegisterForm = function() {
+      registerFormContainer.style.display = 'block';
+      loginFormContainer.style.display = 'none';
+    };
+
+    // Hide all auth forms
+    function hideAuthForms() {
+      loginFormContainer.style.display = 'none';
+      registerFormContainer.style.display = 'none';
+    }
+
+    // Register new user
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const name = registerForm.registerName.value;
+      const email = registerForm.registerEmail.value;
+      const password = registerForm.registerPassword.value;
+      const confirmPassword = registerForm.registerConfirmPassword.value;
+      
+      if (password !== confirmPassword) {
+        showToast('Паролі не співпадають!', 'error');
+        return;
+      }
+      
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        showToast('Реєстрація успішна! Ласкаво просимо!', 'success');
+        registerForm.reset();
+        hideAuthForms();
+      } catch (error) {
+        console.error("Помилка реєстрації:", error);
+        showToast(`Помилка: ${error.message}`, 'error');
+      }
+    });
+
+    // Login user
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = loginForm.loginEmail.value;
+      const password = loginForm.loginPassword.value;
+      
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        showToast('Вхід успішний!', 'success');
+        loginForm.reset();
+        hideAuthForms();
+      } catch (error) {
+        console.error("Помилка входу:", error);
+        showToast(`Помилка: ${error.message}`, 'error');
+      }
+    });
+
+    // Logout user
+    window.logout = function() {
+      signOut(auth).then(() => {
+        showToast('Ви успішно вийшли з акаунта', 'success');
+      }).catch((error) => {
+        console.error("Помилка виходу:", error);
+      });
+    };
+
+    // Auth state observer
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        authButtons.style.display = 'none';
+        userInfo.style.display = 'flex';
+        
+        const displayName = user.displayName || user.email.split('@')[0];
+        userDisplayName.textContent = displayName;
+        userEmail.textContent = user.email;
+        userAvatar.textContent = displayName.charAt(0).toUpperCase();
+        
+        ideaForm.querySelector('button[type="submit"]').disabled = false;
+      } else {
+        authButtons.style.display = 'flex';
+        userInfo.style.display = 'none';
+        hideAuthForms();
+        
+        ideaForm.querySelector('button[type="submit"]').disabled = true;
+      }
+    });
+
+    // Form submission
+    ideaForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const user = auth.currentUser;
+      if (!user) {
+        showToast('Будь ласка, увійдіть або зареєструйтесь', 'error');
+        return;
+      }
+      
+      const title = document.getElementById('ideaTitle').value;
+      const category = document.getElementById('ideaCategory').value;
+      const description = document.getElementById('ideaDescription').value;
+      const userName = user.displayName || user.email.split('@')[0];
+      
+      try {
+        await push(ref(database, 'ideas'), {
+          title,
+          category,
+          description,
+          userName,
+          userId: user.uid,
+          status: 'pending',
+          votes: 0,
+          createdAt: Date.now(),
+          updatedAt: Date.now()
+        });
+        
+        ideaForm.reset();
+        showToast('Ваша ідея успішно відправлена! Дякуємо за пропозицію.', 'success');
+      } catch (error) {
+        console.error("Помилка при відправці ідеї:", error);
+        showToast('Помилка: ' + error.message, 'error');
+      }
+    });
+
+    // Fetch ideas from Firebase
+    function fetchIdeas() {
+      const ideasRef = ref(database, 'ideas');
+      
+      onValue(ideasRef, (snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          allIdeas = Object.keys(data).map(key => ({
+            id: key,
+            ...data[key]
+          })).sort((a, b) => b.createdAt - a.createdAt);
+          
+          updateStats();
+          filterIdeas(currentFilter);
+        } else {
+          allIdeas = [];
+          showNoIdeas();
+          updateStats();
+        }
+      }, (error) => {
+        console.error("Помилка при отриманні ідей:", error);
+        showToast('Помилка завантаження: ' + error.message, 'error');
+        showError();
+      });
+    }
+
+    // Update statistics
+    function updateStats() {
+      totalIdeas.textContent = allIdeas.length;
+      approvedIdeas.textContent = allIdeas.filter(i => i.status === 'approved').length;
+      pendingIdeas.textContent = allIdeas.filter(i => i.status === 'pending').length;
+    }
+
+    // Filter ideas
+    window.filterIdeas = function(filter) {
+      currentFilter = filter;
+      currentPage = 1;
+      
+      if (filter === 'all') {
+        filteredIdeas = [...allIdeas];
+      } else {
+        filteredIdeas = allIdeas.filter(i => i.status === filter);
+      }
+      
+      renderIdeas();
+      renderPagination();
+    };
+
+    // Render ideas
+    function renderIdeas() {
+      if (filteredIdeas.length === 0) {
+        showNoIdeas();
+        return;
+      }
+      
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const pageIdeas = filteredIdeas.slice(startIndex, endIndex);
+      
+      ideasList.innerHTML = pageIdeas.map((idea, index) => createIdeaItem(idea, index)).join('');
+      
+      setTimeout(() => {
+        document.querySelectorAll('.idea-item').forEach((item) => {
+          item.style.animationPlayState = 'running';
+        });
+      }, 10);
+    }
+
+    // Create idea item HTML
+    function createIdeaItem(idea, index) {
+      const date = new Date(idea.createdAt).toLocaleDateString('uk-UA');
+      const initials = idea.userName ? idea.userName.split(' ').map(n => n[0]).join('').toUpperCase() : 'A';
+      const status = statusNames[idea.status] || statusNames.pending;
+      
+      return `
+        <li class="idea-item" style="animation-delay: ${index * 80}ms;">
+          <div class="idea-header">
+            <h4 class="idea-title">${idea.title || 'Без назви'}</h4>
+            <div class="idea-meta">
+              <span class="idea-category">${categoryNames[idea.category] || 'Інше'}</span>
+              <span class="status-badge ${status.class}">${status.text}</span>
+              <span class="idea-date">${date}</span>
+            </div>
+          </div>
+          <div class="idea-content">${idea.description || 'Опис відсутній'}</div>
+          <div class="idea-footer">
+            <div class="idea-author">
+              <div class="author-avatar" title="${idea.userName || 'Анонім'}">${initials}</div>
+              <span class="author-name">${idea.userName || 'Анонім'}</span>
+            </div>
+            <div class="idea-votes">
+              <button class="vote-btn ${idea.userVote === -1 ? 'active' : ''}" onclick="voteIdea('${idea.id}', -1)">
+                <i class="fas fa-heart-broken"></i>
+              </button>
+              <span class="vote-count">${idea.votes || 0}</span>
+              <button class="vote-btn ${idea.userVote === 1 ? 'active' : ''}" onclick="voteIdea('${idea.id}', 1)">
+                <i class="fas fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </li>
+      `;
+    }
+
+    // Show empty state
+    function showNoIdeas() {
+      ideasList.innerHTML = `
+        <li class="idea-item">
+          <div class="empty-state">
+            <div class="empty-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <p>Ідей ще немає. Будьте першим!</p>
+          </div>
+        </li>
+      `;
+    }
+
+    // Show error state
+    function showError() {
+      ideasList.innerHTML = `
+        <li class="idea-item">
+          <div class="empty-state">
+            <div class="empty-icon" style="color: var(--accent-red);">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <p>Помилка завантаження ідей</p>
+            <button class="action-btn" onclick="fetchIdeas()" style="margin-top: 16px;">
+              <i class="fas fa-redo"></i> Спробувати знову
+            </button>
+          </div>
+        </li>
+      `;
+    }
+
+    // Vote for idea
+    window.voteIdea = async function(id, direction) {
+      const user = auth.currentUser;
+      if (!user) {
+        showToast('Будь ласка, увійдіть, щоб голосувати', 'error');
+        return;
+      }
+      
+      try {
+        const voteRef = ref(database, `ideas/${id}/votes/${user.uid}`);
+        const snapshot = await get(voteRef);
+        
+        if (snapshot.exists()) {
+          const currentVote = snapshot.val();
+          if (currentVote === direction) {
+            // Remove vote if clicking same button
+            await remove(voteRef);
+            // Update total votes
+            const ideaRef = ref(database, `ideas/${id}/votes`);
+            const votesSnapshot = await get(ideaRef);
+            let total = 0;
+            if (votesSnapshot.exists()) {
+              Object.values(votesSnapshot.val()).forEach(v => total += v);
+            }
+            await update(ref(database, `ideas/${id}`), { votes: total });
+            showToast('Голос видалено', 'success');
+          } else {
+            // Change vote
+            await set(voteRef, direction);
+            // Update total votes
+            const votesSnapshot = await get(ref(database, `ideas/${id}/votes`));
+            let total = 0;
+            if (votesSnapshot.exists()) {
+              Object.values(votesSnapshot.val()).forEach(v => total += v);
+            }
+            await update(ref(database, `ideas/${id}`), { votes: total });
+            showToast('Голос змінено!', 'success');
+          }
+        } else {
+          // New vote
+          await set(voteRef, direction);
+          // Update total votes
+          const ideaSnapshot = await get(ref(database, `ideas/${id}/votes`));
+          let total = 0;
+          if (ideaSnapshot.exists()) {
+            Object.values(ideaSnapshot.val()).forEach(v => total += v);
+          }
+          total += direction;
+          await update(ref(database, `ideas/${id}`), { votes: total });
+          showToast('Дякуємо за голос!', 'success');
+        }
+        
+        // Refresh ideas list
+        fetchIdeas();
+      } catch (error) {
+        console.error('Vote error:', error);
+        showToast('Помилка голосування', 'error');
+      }
+    };
+
+    // Refresh ideas
+    window.refreshIdeas = function() {
+      ideasList.innerHTML = `
+        <li class="idea-item">
+          <div class="loading">
+            <div class="spinner"></div>
+            <span>Оновлення списку...</span>
+          </div>
+        </li>
+      `;
+      fetchIdeas();
+      showToast('Список ідей оновлено', 'success');
+    };
+
+    // Pagination functions
+    window.changePage = function(direction) {
+      const totalPages = Math.ceil(filteredIdeas.length / itemsPerPage);
+      const newPage = currentPage + direction;
+      
+      if (newPage >= 1 && newPage <= totalPages) {
+        currentPage = newPage;
+        renderIdeas();
+        renderPagination();
+        document.querySelector('.ideas-container').scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    function renderPagination() {
+      const totalPages = Math.ceil(filteredIdeas.length / itemsPerPage);
+      const pageNumbers = document.getElementById('pageNumbers');
+      const paginationInfo = document.getElementById('paginationInfo');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+
+      const startItem = (currentPage - 1) * itemsPerPage + 1;
+      const endItem = Math.min(currentPage * itemsPerPage, filteredIdeas.length);
+      paginationInfo.textContent = `${startItem}-${endItem} з ${filteredIdeas.length}`;
+
+      let pages = [];
+      const maxVisiblePages = 5;
+      
+      if (totalPages <= maxVisiblePages) {
+        pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+      } else {
+        const start = Math.max(1, currentPage - 2);
+        const end = Math.min(totalPages, start + maxVisiblePages - 1);
+        pages = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+      }
+
+      pageNumbers.innerHTML = pages.map(page => `
+        <button class="pagination-btn ${page === currentPage ? 'active' : ''}" onclick="goToPage(${page})">
+          ${page}
+        </button>
+      `).join('');
+    }
+
+    window.goToPage = function(page) {
+      currentPage = page;
+      renderIdeas();
+      renderPagination();
+      document.querySelector('.ideas-container').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    // Initialize
+    window.onload = () => {
+      fetchIdeas();
+      setInterval(fetchIdeas, 30000);
+    };
+  </script>
+</body>
+</html>
